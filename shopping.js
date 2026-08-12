@@ -1,0 +1,11 @@
+let Burger = 250;
+let Pizza = 550;
+let Drinks = 80;
+let burgerQty = 2;
+let pizzaQty = 1;
+let drinksQty = 3;
+let burgerTotal = Burger * burgerQty;
+let pizzaTotal = Pizza * pizzaQty;
+let drinksTotal = Drinks * drinksQty;
+console.log("Total:",total=burgerTotal+pizzaTotal+drinksTotal);
+console.log("Subtotal(including 10% VAT):",total+total*10/100);

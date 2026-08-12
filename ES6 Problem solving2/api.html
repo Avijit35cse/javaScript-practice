@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API FETCH</title>
+</head>
+<body>
+    <div id="userContainer"></div>
+    
+</body>
+<script>
+fetch("https://jsonplaceholder.typicode.com/users")
+  .then(res => res.json())
+  .then(data => {
+
+    const userCards = data.map(user => {
+      return `
+        <div>
+          <h2>${user.name}</h2>
+          <p>${user.email}</p>
+          <p>${user.address.city}</p>
+        </div>
+      `;
+    });
+
+    document.getElementById("userContainer").innerHTML =
+      userCards.join("");
+
+  });
+  </script>
+</html>

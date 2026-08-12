@@ -1,0 +1,38 @@
+// Object Looper
+// Function Name Must be: printObjectDetails
+// একটি Product Catalog System একই Object তিন ভাবে Loop করে দেখাতে চায় — for…in, for…of + Object.entries, 
+// এবং Object.entries + Array Destructuring।
+// Input
+// printObjectDetails(obj, loopType) — loopType: "forin" | "forofentries" | "entriesDestructure"
+// নিয়ম (Rules)
+// "forin" → for...in দিয়ে প্রতি Key Loop করে "<key>: <value>" Array Return করবে
+// "forofentries" → for...of (Object.entries(obj)) দিয়ে একই Format Return করবে
+// "entriesDestructure" → Object.entries(obj).map এ [key, value] Destructure করে একই Format Return করবে
+// Validation
+// Return "Invalid" যদি loopType অচেনা হয়।
+const printObjectDetails=(obj, loopType)=>{
+
+    const validLoopType = ["forin","forofentries","entriesDestructure"]
+    if(!validLoopType.includes(loopType)){return `Invalid`}
+    switch(loopType){
+        case "forin": 
+                let result =[]
+                for(let key in obj){
+                    result.push(`${key} : ${obj[key]}`)
+                }
+                return result;
+        case "forofentries":
+                let result2=[]
+                for(let [key,value] of Object.entries(obj)){
+                    result2.push(`${key} : ${value}`) 
+                }
+                return result2;
+        case "entriesDestructure":
+                return Object.entries(obj).map(([key,value])=> `${key} : ${value}`)
+                
+    }
+    
+}
+console.log(printObjectDetails({fruit:"Mango",price:50}, "forin"))
+console.log(printObjectDetails({fruit:"Mango",price:50}, "entriesDestructure"))
+console.log(printObjectDetails({}, "loopThrough"))
